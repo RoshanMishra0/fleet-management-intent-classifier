@@ -1,0 +1,1058 @@
+{
+  "metrics": {
+    "total_test_cases": 45,
+    "intent_accuracy": 0.9111,
+    "slot_accuracy": 0.8968,
+    "exact_match_accuracy": 0.7778,
+    "valid_json_rate": 1.0,
+    "average_latency_seconds": 4.487
+  },
+  "detailed_results": [
+    {
+      "query": "find nearest truck stop within 20 miles",
+      "expected": {
+        "intent": "FUEL_SEARCH",
+        "merchant_type": "TS",
+        "fuel_type": "Diesel",
+        "radius": 20,
+        "radius_unit": "miles",
+        "amenities": []
+      },
+      "prediction": {
+        "intent": "FUEL_SEARCH",
+        "action": null,
+        "merchant_type": "TS",
+        "fuel_type": "Diesel",
+        "radius": 20.0,
+        "radius_unit": "miles",
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 13.347,
+      "exact_match": true
+    },
+    {
+      "query": "show closest truck station within 15 mi with parking and ATM",
+      "expected": {
+        "intent": "FUEL_SEARCH",
+        "merchant_type": "TS",
+        "fuel_type": "Diesel",
+        "radius": 15,
+        "radius_unit": "miles",
+        "amenities": [
+          "TrkPrkPave",
+          "TrkPrkUnPv",
+          "TrkPrkOvNt",
+          "ATM"
+        ]
+      },
+      "prediction": {
+        "intent": "FUEL_SEARCH",
+        "action": null,
+        "merchant_type": "TS",
+        "fuel_type": "Diesel",
+        "radius": 15.0,
+        "radius_unit": "miles",
+        "amenities": [
+          "TrkPrkPave",
+          "ATM"
+        ],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.189,
+      "exact_match": false
+    },
+    {
+      "query": "find gas station with unpaved parking within 30 km",
+      "expected": {
+        "intent": "FUEL_SEARCH",
+        "merchant_type": "GS",
+        "fuel_type": "Gas",
+        "radius": 30,
+        "radius_unit": "km",
+        "amenities": [
+          "TrkPrkUnPv"
+        ]
+      },
+      "prediction": {
+        "intent": "FUEL_SEARCH",
+        "action": null,
+        "merchant_type": "GS",
+        "fuel_type": "Gas",
+        "radius": 30.0,
+        "radius_unit": "km",
+        "amenities": [
+          "TrkPrkUnPv"
+        ],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.134,
+      "exact_match": true
+    },
+    {
+      "query": "find cheapest gas stop with paved parking",
+      "expected": {
+        "intent": "FUEL_SEARCH",
+        "merchant_type": "GS",
+        "fuel_type": "Gas",
+        "amenities": [
+          "TrkPrkPave"
+        ]
+      },
+      "prediction": {
+        "intent": "FUEL_SEARCH",
+        "action": null,
+        "merchant_type": "GS",
+        "fuel_type": "Gas",
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [
+          "TrkPrkPave"
+        ],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.9
+      },
+      "latency_seconds": 3.948,
+      "exact_match": true
+    },
+    {
+      "query": "nearest gasoline station with overnight parking",
+      "expected": {
+        "intent": "FUEL_SEARCH",
+        "merchant_type": "GS",
+        "fuel_type": "Gas",
+        "amenities": [
+          "TrkPrkOvNt"
+        ]
+      },
+      "prediction": {
+        "intent": "FUEL_SEARCH",
+        "action": null,
+        "merchant_type": "GS",
+        "fuel_type": "Gas",
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [
+          "TrkPrkOvNt"
+        ],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.103,
+      "exact_match": true
+    },
+    {
+      "query": "show truck stop and gas station for def within 10 miles",
+      "expected": {
+        "intent": "FUEL_SEARCH",
+        "merchant_type": "FS",
+        "fuel_type": "DEF",
+        "radius": 10,
+        "radius_unit": "miles"
+      },
+      "prediction": {
+        "intent": "FUEL_SEARCH",
+        "action": null,
+        "merchant_type": "FS",
+        "fuel_type": "DEF",
+        "radius": 10.0,
+        "radius_unit": "miles",
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.16,
+      "exact_match": true
+    },
+    {
+      "query": "find closest truck stop with cng",
+      "expected": {
+        "intent": "FUEL_SEARCH",
+        "merchant_type": "TS",
+        "fuel_type": "CNG"
+      },
+      "prediction": {
+        "intent": "FUEL_SEARCH",
+        "action": null,
+        "merchant_type": "TS",
+        "fuel_type": "CNG",
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 3.965,
+      "exact_match": true
+    },
+    {
+      "query": "find nearest gas station with lng within 50 km",
+      "expected": {
+        "intent": "FUEL_SEARCH",
+        "merchant_type": "GS",
+        "fuel_type": "LNG",
+        "radius": 50,
+        "radius_unit": "km"
+      },
+      "prediction": {
+        "intent": "FUEL_SEARCH",
+        "action": null,
+        "merchant_type": "GS",
+        "fuel_type": "LNG",
+        "radius": 50.0,
+        "radius_unit": "km",
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.098,
+      "exact_match": true
+    },
+    {
+      "query": "show nearest truck stop with reefer",
+      "expected": {
+        "intent": "FUEL_SEARCH",
+        "merchant_type": "TS",
+        "fuel_type": "Reefer"
+      },
+      "prediction": {
+        "intent": "FUEL_SEARCH",
+        "action": null,
+        "merchant_type": "TS",
+        "fuel_type": "Reefer",
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 3.954,
+      "exact_match": true
+    },
+    {
+      "query": "activate card 1234",
+      "expected": {
+        "intent": "CARD_MANAGEMENT",
+        "action": "activate",
+        "card_number": "1234"
+      },
+      "prediction": {
+        "intent": "CARD_MANAGEMENT",
+        "action": "activate",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": "1234",
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.044,
+      "exact_match": true
+    },
+    {
+      "query": "reactivate card 98765",
+      "expected": {
+        "intent": "CARD_MANAGEMENT",
+        "action": "activate",
+        "card_number": "98765"
+      },
+      "prediction": {
+        "intent": "CARD_MANAGEMENT",
+        "action": "activate",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": "98765",
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.056,
+      "exact_match": true
+    },
+    {
+      "query": "please suspend card 4455",
+      "expected": {
+        "intent": "CARD_MANAGEMENT",
+        "action": "hold",
+        "card_number": "4455"
+      },
+      "prediction": {
+        "intent": "CARD_MANAGEMENT",
+        "action": "hold",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": "4455",
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.217,
+      "exact_match": true
+    },
+    {
+      "query": "freeze my card 778899",
+      "expected": {
+        "intent": "CARD_MANAGEMENT",
+        "action": "hold",
+        "card_number": "778899"
+      },
+      "prediction": {
+        "intent": "CARD_MANAGEMENT",
+        "action": "hold",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": "778899",
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.31,
+      "exact_match": true
+    },
+    {
+      "query": "disable my card 987654 forever",
+      "expected": {
+        "intent": "CARD_MANAGEMENT",
+        "action": "block",
+        "card_number": "987654"
+      },
+      "prediction": {
+        "intent": "CARD_MANAGEMENT",
+        "action": "block",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": "987654",
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.176,
+      "exact_match": true
+    },
+    {
+      "query": "permanently deactivate card 223344",
+      "expected": {
+        "intent": "CARD_MANAGEMENT",
+        "action": "block",
+        "card_number": "223344"
+      },
+      "prediction": {
+        "intent": "CARD_MANAGEMENT",
+        "action": "block",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": "223344",
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.067,
+      "exact_match": true
+    },
+    {
+      "query": "my card 778899 was stolen",
+      "expected": {
+        "intent": "CARD_MANAGEMENT",
+        "action": "block",
+        "card_number": "778899"
+      },
+      "prediction": {
+        "intent": "CARD_MANAGEMENT",
+        "action": "block",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": "778899",
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.039,
+      "exact_match": true
+    },
+    {
+      "query": "remove card 5555",
+      "expected": {
+        "intent": "CARD_MANAGEMENT",
+        "action": "block",
+        "card_number": "5555"
+      },
+      "prediction": {
+        "intent": "CARD_MANAGEMENT",
+        "action": "remove",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": "5555",
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.154,
+      "exact_match": false
+    },
+    {
+      "query": "unlock card 123456",
+      "expected": {
+        "intent": "CARD_UNLOCK",
+        "action": null,
+        "card_number": "123456"
+      },
+      "prediction": {
+        "intent": "CARD_UNLOCK",
+        "action": null,
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": "123456",
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.081,
+      "exact_match": true
+    },
+    {
+      "query": "can you unlock my card 654321",
+      "expected": {
+        "intent": "CARD_UNLOCK",
+        "action": null,
+        "card_number": "654321"
+      },
+      "prediction": {
+        "intent": "CARD_UNLOCK",
+        "action": null,
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": "654321",
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.258,
+      "exact_match": true
+    },
+    {
+      "query": "remove user john@test.com",
+      "expected": {
+        "intent": "USER_MANAGEMENT",
+        "action": "deactivate",
+        "email": "john@test.com"
+      },
+      "prediction": {
+        "intent": "USER_MANAGEMENT",
+        "action": null,
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": "john@test.com",
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.138,
+      "exact_match": false
+    },
+    {
+      "query": "revoke user access for alex@fleet.com",
+      "expected": {
+        "intent": "USER_MANAGEMENT",
+        "action": "deactivate",
+        "email": "alex@fleet.com"
+      },
+      "prediction": {
+        "intent": "USER_MANAGEMENT",
+        "action": null,
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": "alex@fleet.com",
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.209,
+      "exact_match": false
+    },
+    {
+      "query": "suspend user mary.smith@company.org",
+      "expected": {
+        "intent": "USER_MANAGEMENT",
+        "action": "deactivate",
+        "email": "mary.smith@company.org"
+      },
+      "prediction": {
+        "intent": "USER_MANAGEMENT",
+        "action": "deactivate",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": "mary.smith@company.org",
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.201,
+      "exact_match": true
+    },
+    {
+      "query": "generate a fuel code",
+      "expected": {
+        "intent": "FUEL_CODE",
+        "action": "generate"
+      },
+      "prediction": {
+        "intent": "FUEL_CODE",
+        "action": "generate",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.103,
+      "exact_match": true
+    },
+    {
+      "query": "create a fuel code",
+      "expected": {
+        "intent": "FUEL_CODE",
+        "action": "generate"
+      },
+      "prediction": {
+        "intent": "FUEL_CODE",
+        "action": "create",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.217,
+      "exact_match": false
+    },
+    {
+      "query": "cancel fuel code",
+      "expected": {
+        "intent": "FUEL_CODE",
+        "action": "cancel"
+      },
+      "prediction": {
+        "intent": "FUEL_CODE",
+        "action": "cancel",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.237,
+      "exact_match": true
+    },
+    {
+      "query": "void fuel code",
+      "expected": {
+        "intent": "FUEL_CODE",
+        "action": "cancel"
+      },
+      "prediction": {
+        "intent": "FUEL_CODE",
+        "action": "cancel",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.205,
+      "exact_match": true
+    },
+    {
+      "query": "list fuel codes",
+      "expected": {
+        "intent": "FUEL_CODE",
+        "action": "list"
+      },
+      "prediction": {
+        "intent": "FUEL_CODE",
+        "action": "list",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.272,
+      "exact_match": true
+    },
+    {
+      "query": "check fuel code status",
+      "expected": {
+        "intent": "FUEL_CODE",
+        "action": "status"
+      },
+      "prediction": {
+        "intent": "FUEL_CODE",
+        "action": "status",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.221,
+      "exact_match": true
+    },
+    {
+      "query": "create driver id",
+      "expected": {
+        "intent": "PROMPTED_ID_MANAGEMENT",
+        "action": "create"
+      },
+      "prediction": {
+        "intent": "PROMPTED_ID_MANAGEMENT",
+        "action": "create",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.37,
+      "exact_match": true
+    },
+    {
+      "query": "activate prompted id",
+      "expected": {
+        "intent": "PROMPTED_ID_MANAGEMENT",
+        "action": "activate"
+      },
+      "prediction": {
+        "intent": "PROMPTED_ID_MANAGEMENT",
+        "action": "activate",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.385,
+      "exact_match": true
+    },
+    {
+      "query": "disable pid",
+      "expected": {
+        "intent": "PROMPTED_ID_MANAGEMENT",
+        "action": "inactivate"
+      },
+      "prediction": {
+        "intent": "PROMPTED_ID_MANAGEMENT",
+        "action": "deactivate",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.311,
+      "exact_match": false
+    },
+    {
+      "query": "modify driver id for the user",
+      "expected": {
+        "intent": "PROMPTED_ID_MANAGEMENT",
+        "action": "change"
+      },
+      "prediction": {
+        "intent": "PROMPTED_ID_MANAGEMENT",
+        "action": "change",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.384,
+      "exact_match": true
+    },
+    {
+      "query": "show prompted id details",
+      "expected": {
+        "intent": "PROMPTED_ID_MANAGEMENT",
+        "action": "details"
+      },
+      "prediction": {
+        "intent": "PROMPTED_ID_MANAGEMENT",
+        "action": "details",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.464,
+      "exact_match": true
+    },
+    {
+      "query": "enable notification",
+      "expected": {
+        "intent": "NOTIFICATION_MANAGEMENT",
+        "action": "enable"
+      },
+      "prediction": {
+        "intent": "NOTIFICATION_MANAGEMENT",
+        "action": "enable",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.412,
+      "exact_match": true
+    },
+    {
+      "query": "activate alerts",
+      "expected": {
+        "intent": "NOTIFICATION_MANAGEMENT",
+        "action": "enable"
+      },
+      "prediction": {
+        "intent": "NOTIFICATION_MANAGEMENT",
+        "action": "enable",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.46,
+      "exact_match": true
+    },
+    {
+      "query": "disable all alerts",
+      "expected": {
+        "intent": "NOTIFICATION_MANAGEMENT",
+        "action": "disable_all"
+      },
+      "prediction": {
+        "intent": "NOTIFICATION_MANAGEMENT",
+        "action": "disable_all",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.421,
+      "exact_match": true
+    },
+    {
+      "query": "enable all notifications",
+      "expected": {
+        "intent": "NOTIFICATION_MANAGEMENT",
+        "action": "enable_all"
+      },
+      "prediction": {
+        "intent": "NOTIFICATION_MANAGEMENT",
+        "action": "enable_all",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.482,
+      "exact_match": true
+    },
+    {
+      "query": "show exception details",
+      "expected": {
+        "intent": "NOTIFICATION_MANAGEMENT",
+        "action": "details"
+      },
+      "prediction": {
+        "intent": "NOTIFICATION_MANAGEMENT",
+        "action": "details",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.504,
+      "exact_match": true
+    },
+    {
+      "query": "show me another",
+      "expected": {
+        "intent": "UNKNOWN",
+        "action": null,
+        "pagination_action": "next"
+      },
+      "prediction": {
+        "intent": "NOTIFICATION_MANAGEMENT",
+        "action": "details",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": "next",
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.545,
+      "exact_match": false
+    },
+    {
+      "query": "next option",
+      "expected": {
+        "intent": "UNKNOWN",
+        "action": null,
+        "pagination_action": "next"
+      },
+      "prediction": {
+        "intent": "UNKNOWN",
+        "action": null,
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": "next",
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.873,
+      "exact_match": true
+    },
+    {
+      "query": "what else",
+      "expected": {
+        "intent": "UNKNOWN",
+        "action": null,
+        "pagination_action": "next"
+      },
+      "prediction": {
+        "intent": "NOTIFICATION_MANAGEMENT",
+        "action": "details",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.797,
+      "exact_match": false
+    },
+    {
+      "query": "show fuel spend trends dashboard",
+      "expected": {
+        "intent": "UNKNOWN"
+      },
+      "prediction": {
+        "intent": "UNKNOWN",
+        "action": null,
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.428,
+      "exact_match": true
+    },
+    {
+      "query": "generate fuel usage report",
+      "expected": {
+        "intent": "UNKNOWN"
+      },
+      "prediction": {
+        "intent": "NOTIFICATION_MANAGEMENT",
+        "action": "details",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.689,
+      "exact_match": false
+    },
+    {
+      "query": "show analytics insights for drivers",
+      "expected": {
+        "intent": "UNKNOWN"
+      },
+      "prediction": {
+        "intent": "UNKNOWN",
+        "action": null,
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.55,
+      "exact_match": true
+    },
+    {
+      "query": "summarize monthly fuel activity",
+      "expected": {
+        "intent": "UNKNOWN"
+      },
+      "prediction": {
+        "intent": "NOTIFICATION_MANAGEMENT",
+        "action": "details",
+        "merchant_type": null,
+        "fuel_type": null,
+        "radius": null,
+        "radius_unit": null,
+        "amenities": [],
+        "card_number": null,
+        "email": null,
+        "pagination_action": null,
+        "confidence": 0.95
+      },
+      "latency_seconds": 4.725,
+      "exact_match": false
+    }
+  ]
+}

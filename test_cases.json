@@ -1,0 +1,353 @@
+[
+  {
+    "query": "find nearest truck stop within 20 miles",
+    "expected": {
+      "intent": "FUEL_SEARCH",
+      "merchant_type": "TS",
+      "fuel_type": "Diesel",
+      "radius": 20,
+      "radius_unit": "miles",
+      "amenities": []
+    }
+  },
+  {
+    "query": "show closest truck station within 15 mi with parking and ATM",
+    "expected": {
+      "intent": "FUEL_SEARCH",
+      "merchant_type": "TS",
+      "fuel_type": "Diesel",
+      "radius": 15,
+      "radius_unit": "miles",
+      "amenities": ["TrkPrkPave", "TrkPrkUnPv", "TrkPrkOvNt", "ATM"]
+    }
+  },
+  {
+    "query": "find gas station with unpaved parking within 30 km",
+    "expected": {
+      "intent": "FUEL_SEARCH",
+      "merchant_type": "GS",
+      "fuel_type": "Gas",
+      "radius": 30,
+      "radius_unit": "km",
+      "amenities": ["TrkPrkUnPv"]
+    }
+  },
+  {
+    "query": "find cheapest gas stop with paved parking",
+    "expected": {
+      "intent": "FUEL_SEARCH",
+      "merchant_type": "GS",
+      "fuel_type": "Gas",
+      "amenities": ["TrkPrkPave"]
+    }
+  },
+  {
+    "query": "nearest gasoline station with overnight parking",
+    "expected": {
+      "intent": "FUEL_SEARCH",
+      "merchant_type": "GS",
+      "fuel_type": "Gas",
+      "amenities": ["TrkPrkOvNt"]
+    }
+  },
+  {
+    "query": "show truck stop and gas station for def within 10 miles",
+    "expected": {
+      "intent": "FUEL_SEARCH",
+      "merchant_type": "FS",
+      "fuel_type": "DEF",
+      "radius": 10,
+      "radius_unit": "miles"
+    }
+  },
+  {
+    "query": "find closest truck stop with cng",
+    "expected": {
+      "intent": "FUEL_SEARCH",
+      "merchant_type": "TS",
+      "fuel_type": "CNG"
+    }
+  },
+  {
+    "query": "find nearest gas station with lng within 50 km",
+    "expected": {
+      "intent": "FUEL_SEARCH",
+      "merchant_type": "GS",
+      "fuel_type": "LNG",
+      "radius": 50,
+      "radius_unit": "km"
+    }
+  },
+  {
+    "query": "show nearest truck stop with reefer",
+    "expected": {
+      "intent": "FUEL_SEARCH",
+      "merchant_type": "TS",
+      "fuel_type": "Reefer"
+    }
+  },
+  {
+    "query": "activate card 1234",
+    "expected": {
+      "intent": "CARD_MANAGEMENT",
+      "action": "activate",
+      "card_number": "1234"
+    }
+  },
+  {
+    "query": "reactivate card 98765",
+    "expected": {
+      "intent": "CARD_MANAGEMENT",
+      "action": "activate",
+      "card_number": "98765"
+    }
+  },
+  {
+    "query": "please suspend card 4455",
+    "expected": {
+      "intent": "CARD_MANAGEMENT",
+      "action": "hold",
+      "card_number": "4455"
+    }
+  },
+  {
+    "query": "freeze my card 778899",
+    "expected": {
+      "intent": "CARD_MANAGEMENT",
+      "action": "hold",
+      "card_number": "778899"
+    }
+  },
+  {
+    "query": "disable my card 987654 forever",
+    "expected": {
+      "intent": "CARD_MANAGEMENT",
+      "action": "block",
+      "card_number": "987654"
+    }
+  },
+  {
+    "query": "permanently deactivate card 223344",
+    "expected": {
+      "intent": "CARD_MANAGEMENT",
+      "action": "block",
+      "card_number": "223344"
+    }
+  },
+  {
+    "query": "my card 778899 was stolen",
+    "expected": {
+      "intent": "CARD_MANAGEMENT",
+      "action": "block",
+      "card_number": "778899"
+    }
+  },
+  {
+    "query": "remove card 5555",
+    "expected": {
+      "intent": "CARD_MANAGEMENT",
+      "action": "block",
+      "card_number": "5555"
+    }
+  },
+  {
+    "query": "unlock card 123456",
+    "expected": {
+      "intent": "CARD_UNLOCK",
+      "action": null,
+      "card_number": "123456"
+    }
+  },
+  {
+    "query": "can you unlock my card 654321",
+    "expected": {
+      "intent": "CARD_UNLOCK",
+      "action": null,
+      "card_number": "654321"
+    }
+  },
+  {
+    "query": "remove user john@test.com",
+    "expected": {
+      "intent": "USER_MANAGEMENT",
+      "action": "deactivate",
+      "email": "john@test.com"
+    }
+  },
+  {
+    "query": "revoke user access for alex@fleet.com",
+    "expected": {
+      "intent": "USER_MANAGEMENT",
+      "action": "deactivate",
+      "email": "alex@fleet.com"
+    }
+  },
+  {
+    "query": "suspend user mary.smith@company.org",
+    "expected": {
+      "intent": "USER_MANAGEMENT",
+      "action": "deactivate",
+      "email": "mary.smith@company.org"
+    }
+  },
+  {
+    "query": "generate a fuel code",
+    "expected": {
+      "intent": "FUEL_CODE",
+      "action": "generate"
+    }
+  },
+  {
+    "query": "create a fuel code",
+    "expected": {
+      "intent": "FUEL_CODE",
+      "action": "generate"
+    }
+  },
+  {
+    "query": "cancel fuel code",
+    "expected": {
+      "intent": "FUEL_CODE",
+      "action": "cancel"
+    }
+  },
+  {
+    "query": "void fuel code",
+    "expected": {
+      "intent": "FUEL_CODE",
+      "action": "cancel"
+    }
+  },
+  {
+    "query": "list fuel codes",
+    "expected": {
+      "intent": "FUEL_CODE",
+      "action": "list"
+    }
+  },
+  {
+    "query": "check fuel code status",
+    "expected": {
+      "intent": "FUEL_CODE",
+      "action": "status"
+    }
+  },
+  {
+    "query": "create driver id",
+    "expected": {
+      "intent": "PROMPTED_ID_MANAGEMENT",
+      "action": "create"
+    }
+  },
+  {
+    "query": "activate prompted id",
+    "expected": {
+      "intent": "PROMPTED_ID_MANAGEMENT",
+      "action": "activate"
+    }
+  },
+  {
+    "query": "disable pid",
+    "expected": {
+      "intent": "PROMPTED_ID_MANAGEMENT",
+      "action": "inactivate"
+    }
+  },
+  {
+    "query": "modify driver id for the user",
+    "expected": {
+      "intent": "PROMPTED_ID_MANAGEMENT",
+      "action": "change"
+    }
+  },
+  {
+    "query": "show prompted id details",
+    "expected": {
+      "intent": "PROMPTED_ID_MANAGEMENT",
+      "action": "details"
+    }
+  },
+  {
+    "query": "enable notification",
+    "expected": {
+      "intent": "NOTIFICATION_MANAGEMENT",
+      "action": "enable"
+    }
+  },
+  {
+    "query": "activate alerts",
+    "expected": {
+      "intent": "NOTIFICATION_MANAGEMENT",
+      "action": "enable"
+    }
+  },
+  {
+    "query": "disable all alerts",
+    "expected": {
+      "intent": "NOTIFICATION_MANAGEMENT",
+      "action": "disable_all"
+    }
+  },
+  {
+    "query": "enable all notifications",
+    "expected": {
+      "intent": "NOTIFICATION_MANAGEMENT",
+      "action": "enable_all"
+    }
+  },
+  {
+    "query": "show exception details",
+    "expected": {
+      "intent": "NOTIFICATION_MANAGEMENT",
+      "action": "details"
+    }
+  },
+  {
+    "query": "show me another",
+    "expected": {
+      "intent": "UNKNOWN",
+      "action": null,
+      "pagination_action": "next"
+    }
+  },
+  {
+    "query": "next option",
+    "expected": {
+      "intent": "UNKNOWN",
+      "action": null,
+      "pagination_action": "next"
+    }
+  },
+  {
+    "query": "what else",
+    "expected": {
+      "intent": "UNKNOWN",
+      "action": null,
+      "pagination_action": "next"
+    }
+  },
+  {
+    "query": "show fuel spend trends dashboard",
+    "expected": {
+      "intent": "UNKNOWN"
+    }
+  },
+  {
+    "query": "generate fuel usage report",
+    "expected": {
+      "intent": "UNKNOWN"
+    }
+  },
+  {
+    "query": "show analytics insights for drivers",
+    "expected": {
+      "intent": "UNKNOWN"
+    }
+  },
+  {
+    "query": "summarize monthly fuel activity",
+    "expected": {
+      "intent": "UNKNOWN"
+    }
+  }
+]
