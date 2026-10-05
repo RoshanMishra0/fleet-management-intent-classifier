@@ -1,10 +1,8 @@
-import json
-import requests
+"""Prompt sent to the model.
 
-
-OLLAMA_URL = "http://localhost:11434/api/generate"
-MODEL_NAME = "qwen2.5:3b"
-
+The text is unchanged from the version the published results were measured
+with. Edit it only together with a fresh run of the evaluation.
+"""
 
 SYSTEM_PROMPT = """
 You are a fleet management intent classification and slot extraction engine.
@@ -253,8 +251,8 @@ Expected JSON:
 """
 
 
-def extract_with_llm(query: str) -> dict:
-    prompt = f"""{SYSTEM_PROMPT}
+def build_prompt(query: str) -> str:
+    return f"""{SYSTEM_PROMPT}
 
 Classify the following user query.
 
@@ -269,38 +267,3 @@ Before returning JSON, apply this order:
 
 Return only JSON:
 """
-
-    payload = {
-        "model": MODEL_NAME,
-        "prompt": prompt,
-        "stream": False,
-        "format": "json",
-        "options": {
-            "temperature": 0,
-            "top_p": 0.1,
-            "repeat_penalty": 1.1
-        }
-    }
-
-    response = requests.post(OLLAMA_URL, json=payload, timeout=60)
-    response.raise_for_status()
-
-    result = response.json()
-    raw_output = result.get("response", "{}")
-
-    try:
-        return json.loads(raw_output)
-    except json.JSONDecodeError:
-        return {
-            "intent": "UNKNOWN",
-            "action": None,
-            "merchant_type": None,
-            "fuel_type": None,
-            "radius": None,
-            "radius_unit": None,
-            "amenities": [],
-            "card_number": None,
-            "email": None,
-            "pagination_action": None,
-            "confidence": 0.0
-        }

@@ -3,13 +3,15 @@
     "total_test_cases": 45,
     "intent_accuracy": 0.9111,
     "slot_accuracy": 0.8968,
-    "exact_match_accuracy": 0.7778
+    "exact_match_accuracy": 0.7778,
+    "valid_json_rate": 1.0
   },
   "with_rule_layer": {
     "total_test_cases": 45,
     "intent_accuracy": 1.0,
     "slot_accuracy": 1.0,
     "exact_match_accuracy": 1.0,
+    "valid_json_rate": 1.0,
     "answered_without_model": 7
   },
   "failures": []

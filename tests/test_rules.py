@@ -1,12 +1,9 @@
 """Unit tests for the rule layer. No model or server needed: `pytest`."""
 
 import json
-import os
-import sys
+from pathlib import Path
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from postprocess import (  # noqa: E402
+from fleet_intent.rules import (
     extract_amenities,
     extract_radius,
     is_analytics_request,
@@ -15,7 +12,7 @@ from postprocess import (  # noqa: E402
     pre_classify,
 )
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA = Path(__file__).resolve().parent.parent / "data"
 
 
 def same(a, b):
@@ -173,7 +170,7 @@ def _rules_only(case):
 
 
 def _check_file(name):
-    with open(os.path.join(ROOT, name), encoding="utf-8") as f:
+    with open(DATA / name, encoding="utf-8") as f:
         cases = json.load(f)
     for case in cases:
         prediction = _rules_only(case)

@@ -5,7 +5,7 @@
     "slot_accuracy": 0.9113,
     "exact_match_accuracy": 0.8889,
     "valid_json_rate": 1.0,
-    "average_latency_seconds": 5.374
+    "average_latency_seconds": 5.155
   },
   "detailed_results": [
     {
@@ -26,9 +26,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 2158.3
       },
-      "latency_seconds": 4.326,
+      "latency_seconds": 2.175,
       "exact_match": true
     },
     {
@@ -51,9 +53,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 1881.5
       },
-      "latency_seconds": 4.383,
+      "latency_seconds": 1.89,
       "exact_match": true
     },
     {
@@ -76,9 +80,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 1986.5
       },
-      "latency_seconds": 4.366,
+      "latency_seconds": 1.995,
       "exact_match": true
     },
     {
@@ -101,9 +107,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 2026.0
       },
-      "latency_seconds": 4.489,
+      "latency_seconds": 2.034,
       "exact_match": true
     },
     {
@@ -129,9 +137,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 2376.7
       },
-      "latency_seconds": 4.269,
+      "latency_seconds": 2.385,
       "exact_match": true
     },
     {
@@ -163,9 +173,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 2354.9
       },
-      "latency_seconds": 4.491,
+      "latency_seconds": 2.366,
       "exact_match": true
     },
     {
@@ -193,9 +205,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 2365.5
       },
-      "latency_seconds": 4.579,
+      "latency_seconds": 2.377,
       "exact_match": true
     },
     {
@@ -216,9 +230,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 2133.6
       },
-      "latency_seconds": 4.397,
+      "latency_seconds": 2.144,
       "exact_match": true
     },
     {
@@ -241,9 +257,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 2226.6
       },
-      "latency_seconds": 4.487,
+      "latency_seconds": 2.238,
       "exact_match": false
     },
     {
@@ -265,9 +283,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": "next",
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 2195.4
       },
-      "latency_seconds": 4.43,
+      "latency_seconds": 2.206,
       "exact_match": false
     },
     {
@@ -288,9 +308,11 @@
         "card_number": "4321",
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 2326.6
       },
-      "latency_seconds": 4.552,
+      "latency_seconds": 2.338,
       "exact_match": true
     },
     {
@@ -311,9 +333,11 @@
         "card_number": "56789",
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 2254.2
       },
-      "latency_seconds": 4.708,
+      "latency_seconds": 2.266,
       "exact_match": true
     },
     {
@@ -334,9 +358,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 2575.7
       },
-      "latency_seconds": 4.963,
+      "latency_seconds": 2.587,
       "exact_match": false
     },
     {
@@ -357,9 +383,11 @@
         "card_number": "9090",
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 2339.8
       },
-      "latency_seconds": 4.776,
+      "latency_seconds": 2.351,
       "exact_match": true
     },
     {
@@ -380,9 +408,11 @@
         "card_number": "445566",
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 2487.8
       },
-      "latency_seconds": 4.818,
+      "latency_seconds": 2.501,
       "exact_match": true
     },
     {
@@ -403,9 +433,11 @@
         "card_number": "7788",
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 2798.4
       },
-      "latency_seconds": 4.818,
+      "latency_seconds": 2.814,
       "exact_match": true
     },
     {
@@ -426,9 +458,11 @@
         "card_number": "2468",
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 4050.9
       },
-      "latency_seconds": 5.433,
+      "latency_seconds": 4.066,
       "exact_match": true
     },
     {
@@ -449,9 +483,11 @@
         "card_number": "13579",
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 3255.6
       },
-      "latency_seconds": 5.266,
+      "latency_seconds": 3.272,
       "exact_match": true
     },
     {
@@ -472,9 +508,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 2918.0
       },
-      "latency_seconds": 5.53,
+      "latency_seconds": 2.93,
       "exact_match": false
     },
     {
@@ -495,9 +533,11 @@
         "card_number": "5544",
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 3721.8
       },
-      "latency_seconds": 6.662,
+      "latency_seconds": 3.76,
       "exact_match": true
     },
     {
@@ -518,9 +558,11 @@
         "card_number": "908070",
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 8114.1
       },
-      "latency_seconds": 5.614,
+      "latency_seconds": 8.198,
       "exact_match": true
     },
     {
@@ -541,9 +583,11 @@
         "card_number": null,
         "email": "priya@fleetco.in",
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 8858.8
       },
-      "latency_seconds": 6.643,
+      "latency_seconds": 8.951,
       "exact_match": true
     },
     {
@@ -564,9 +608,11 @@
         "card_number": null,
         "email": "sam.lee@transport.com",
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 9102.8
       },
-      "latency_seconds": 9.254,
+      "latency_seconds": 9.195,
       "exact_match": true
     },
     {
@@ -587,9 +633,11 @@
         "card_number": null,
         "email": "raj@logistics.co",
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 8467.8
       },
-      "latency_seconds": 8.38,
+      "latency_seconds": 8.579,
       "exact_match": true
     },
     {
@@ -609,9 +657,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 7221.6
       },
-      "latency_seconds": 7.811,
+      "latency_seconds": 7.287,
       "exact_match": true
     },
     {
@@ -631,9 +681,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 7550.2
       },
-      "latency_seconds": 7.291,
+      "latency_seconds": 7.605,
       "exact_match": true
     },
     {
@@ -653,9 +705,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 9441.5
       },
-      "latency_seconds": 8.013,
+      "latency_seconds": 9.527,
       "exact_match": false
     },
     {
@@ -675,9 +729,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 7427.3
       },
-      "latency_seconds": 8.754,
+      "latency_seconds": 7.513,
       "exact_match": true
     },
     {
@@ -697,9 +753,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 7921.2
       },
-      "latency_seconds": 6.522,
+      "latency_seconds": 7.978,
       "exact_match": true
     },
     {
@@ -719,9 +777,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 8503.6
       },
-      "latency_seconds": 9.19,
+      "latency_seconds": 8.565,
       "exact_match": true
     },
     {
@@ -741,9 +801,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 8483.7
       },
-      "latency_seconds": 6.9,
+      "latency_seconds": 8.544,
       "exact_match": true
     },
     {
@@ -763,9 +825,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 7538.0
       },
-      "latency_seconds": 6.046,
+      "latency_seconds": 7.597,
       "exact_match": true
     },
     {
@@ -785,9 +849,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 8903.4
       },
-      "latency_seconds": 5.764,
+      "latency_seconds": 8.99,
       "exact_match": true
     },
     {
@@ -807,9 +873,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 9415.8
       },
-      "latency_seconds": 5.257,
+      "latency_seconds": 9.495,
       "exact_match": true
     },
     {
@@ -829,9 +897,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 10097.5
       },
-      "latency_seconds": 5.982,
+      "latency_seconds": 10.182,
       "exact_match": true
     },
     {
@@ -851,9 +921,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 8650.2
       },
-      "latency_seconds": 5.911,
+      "latency_seconds": 8.731,
       "exact_match": true
     },
     {
@@ -873,9 +945,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 8881.6
       },
-      "latency_seconds": 5.862,
+      "latency_seconds": 9.011,
       "exact_match": true
     },
     {
@@ -895,9 +969,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 9594.0
       },
-      "latency_seconds": 4.854,
+      "latency_seconds": 9.736,
       "exact_match": true
     },
     {
@@ -917,9 +993,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.95
+        "confidence": 0.95,
+        "source": "model",
+        "latency_ms": 9156.9
       },
-      "latency_seconds": 7.096,
+      "latency_seconds": 9.242,
       "exact_match": true
     },
     {
@@ -940,9 +1018,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": "next",
-        "confidence": 1.0
+        "confidence": 1.0,
+        "source": "rules",
+        "latency_ms": 53.8
       },
-      "latency_seconds": 0.03,
+      "latency_seconds": 0.13,
       "exact_match": true
     },
     {
@@ -961,9 +1041,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 1.0
+        "confidence": 1.0,
+        "source": "rules",
+        "latency_ms": 0.6
       },
-      "latency_seconds": 0.013,
+      "latency_seconds": 0.082,
       "exact_match": true
     },
     {
@@ -982,9 +1064,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 1.0
+        "confidence": 1.0,
+        "source": "rules",
+        "latency_ms": 1.4
       },
-      "latency_seconds": 0.016,
+      "latency_seconds": 0.094,
       "exact_match": true
     },
     {
@@ -1003,9 +1087,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 1.0
+        "confidence": 1.0,
+        "source": "rules",
+        "latency_ms": 2.0
       },
-      "latency_seconds": 0.018,
+      "latency_seconds": 0.078,
       "exact_match": true
     },
     {
@@ -1024,9 +1110,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.0
+        "confidence": 0.0,
+        "source": "model",
+        "latency_ms": 7767.3
       },
-      "latency_seconds": 9.071,
+      "latency_seconds": 7.861,
       "exact_match": true
     },
     {
@@ -1045,9 +1133,11 @@
         "card_number": null,
         "email": null,
         "pagination_action": null,
-        "confidence": 0.0
+        "confidence": 0.0,
+        "source": "model",
+        "latency_ms": 8039.0
       },
-      "latency_seconds": 5.799,
+      "latency_seconds": 8.13,
       "exact_match": true
     }
   ]

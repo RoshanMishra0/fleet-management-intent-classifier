@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fleet Intent Classifier</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231f5fbf'/><path d='M7 20h14l4-5v5h0' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/><circle cx='11' cy='22' r='2' fill='white'/><circle cx='21' cy='22' r='2' fill='white'/></svg>">
+<style>
+  :root {
+    --bg: #f4f5f7;
+    --surface: #ffffff;
+    --surface-2: #f8f9fb;
+    --border: #dfe3e8;
+    --text: #1d2330;
+    --muted: #5d6675;
+    --accent: #1f5fbf;
+    --accent-soft: #e7effb;
+    --ok: #1b7f4b;
+    --ok-soft: #e4f4ea;
+    --warn: #9a6200;
+    --warn-soft: #fbf1dc;
+    --err: #b42318;
+    --err-soft: #fdecea;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --radius: 10px;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12151b;
+      --surface: #1a1e26;
+      --surface-2: #1f2430;
+      --border: #2e3441;
+      --text: #e6e9ef;
+      --muted: #9aa3b2;
+      --accent: #6ea2f5;
+      --accent-soft: #1d2a40;
+      --ok: #5fcb8e;
+      --ok-soft: #173326;
+      --warn: #e2b04a;
+      --warn-soft: #362a12;
+      --err: #f0857a;
+      --err-soft: #3a1c1a;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+
+  header { background: var(--surface); border-bottom: 1px solid var(--border); }
+  header .wrap { display: flex; align-items: center; gap: 12px; padding-top: 14px; padding-bottom: 14px; }
+  .logo { width: 34px; height: 34px; border-radius: 8px; background: var(--accent); display: grid; place-items: center; flex: none; }
+  .logo svg { width: 22px; height: 22px; }
+  header h1 { font-size: 17px; margin: 0; }
+  header p { margin: 0; color: var(--muted); font-size: 13px; }
+  .status { margin-left: auto; display: inline-flex; align-items: center; gap: 7px; font-size: 13px; color: var(--muted);
+            border: 1px solid var(--border); border-radius: 999px; padding: 4px 11px; background: var(--surface-2); white-space: nowrap; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+  .status.ready .dot { background: var(--ok); }
+  .status.down .dot { background: var(--err); }
+
+  main { padding: 24px 0 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 20px; align-items: start; }
+  @media (max-width: 860px) { main { grid-template-columns: minmax(0, 1fr); } header p, .keys { display: none; } }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; }
+  .card + .card { margin-top: 20px; }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 12px; font-weight: 600; }
+
+  form { display: flex; flex-direction: column; gap: 10px; }
+  textarea {
+    width: 100%; min-height: 84px; resize: vertical; padding: 11px 12px; font: inherit; color: var(--text);
+    background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px;
+  }
+  textarea:focus, button:focus-visible, .chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .row { display: flex; align-items: center; gap: 10px; }
+  .hint { color: var(--muted); font-size: 12.5px; }
+  .counter { margin-left: auto; color: var(--muted); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+  button.primary {
+    background: var(--accent); color: #fff; border: 0; border-radius: 8px; padding: 9px 18px; font: inherit; font-weight: 600; cursor: pointer;
+  }
+  @media (prefers-color-scheme: dark) { button.primary { color: #0d1422; } }
+  button.primary:disabled { opacity: .55; cursor: progress; }
+
+  .examples { display: flex; flex-direction: column; gap: 10px; }
+  .group-label { font-size: 12px; color: var(--muted); margin-bottom: 5px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    border: 1px solid var(--border); background: var(--surface-2); color: var(--text); border-radius: 999px;
+    padding: 4px 11px; font: inherit; font-size: 13px; cursor: pointer; text-align: left;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+
+  .empty { color: var(--muted); text-align: center; padding: 38px 10px; }
+  .intent-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 12px; }
+  .intent { font-size: 22px; font-weight: 700; font-family: var(--mono); letter-spacing: -.01em; overflow-wrap: anywhere; }
+  .badge { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+  .badge.rules { background: var(--ok-soft); color: var(--ok); }
+  .badge.unknown { background: var(--warn-soft); color: var(--warn); }
+  .query-echo { color: var(--muted); margin: 6px 0 14px; overflow-wrap: anywhere; }
+
+  .meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 16px; }
+  .meta > div { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; min-width: 0; }
+  .meta > div > span { display: block; font-size: 12px; color: var(--muted); }
+  .meta strong { font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+  .bar { height: 5px; border-radius: 3px; background: var(--border); margin-top: 6px; overflow: hidden; }
+  .bar i { display: block; height: 100%; background: var(--accent); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 7px 4px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { width: 38%; color: var(--muted); font-weight: 500; }
+  td code { font-family: var(--mono); font-size: 13px; overflow-wrap: anywhere; }
+  .none { color: var(--muted); font-style: italic; }
+
+  details { margin-top: 14px; }
+  summary { cursor: pointer; color: var(--muted); font-size: 13px; }
+  pre { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 12px; overflow-x: auto;
+        font: 12.5px/1.5 var(--mono); margin: 8px 0 0; }
+
+  .error { background: var(--err-soft); color: var(--err); border-radius: 8px; padding: 12px 14px; }
+
+  .history { list-style: none; margin: 0; padding: 0; }
+  .history li + li { border-top: 1px solid var(--border); }
+  .history button { all: unset; box-sizing: border-box; display: flex; gap: 10px; width: 100%; padding: 8px 2px; cursor: pointer; align-items: baseline; }
+  .history button:hover .q { color: var(--accent); }
+  .history .q { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .history .i { font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .stat { border: 1px solid var(--border); border-radius: 8px; padding: 10px; background: var(--surface-2); }
+  .stat strong { font-size: 20px; display: block; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: 12px; color: var(--muted); }
+  .stat em { font-style: normal; font-size: 12px; color: var(--muted); }
+
+  footer { color: var(--muted); font-size: 13px; padding: 0 0 32px; }
+  footer a { color: var(--accent); }
+  .spinner { width: 14px; height: 14px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%;
+             animation: spin .8s linear infinite; display: inline-block; vertical-align: -2px; margin-right: 6px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16V7h11v9M14 10h4l3 3v3h-7"/><circle cx="7" cy="17" r="1.8"/><circle cx="17" cy="17" r="1.8"/></svg>
+    </div>
+    <div>
+      <h1>Fleet Intent Classifier</h1>
+      <p>Free text in, validated JSON out. Runs on a local 3B model with a deterministic rule layer.</p>
+    </div>
+    <div class="status" id="status" role="status"><span class="dot"></span><span id="status-text">Checking model…</span></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <section>
+      <div class="card">
+        <h2>Query</h2>
+        <form id="form">
+          <label for="query" class="hint">Describe what a fleet manager wants to do</label>
+          <textarea id="query" maxlength="500" placeholder="e.g. find the nearest truck stop with overnight parking within 20 miles" required></textarea>
+          <div class="row">
+            <button class="primary" id="submit" type="submit">Classify</button>
+            <span class="hint keys">Enter to send · Shift+Enter for a new line</span>
+            <span class="counter" id="counter">0 / 500</span>
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Try an example</h2>
+        <div class="examples" id="examples"></div>
+      </div>
+
+      <div class="card" id="history-card" hidden>
+        <h2>Recent</h2>
+        <ul class="history" id="history"></ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="card" id="result" aria-live="polite">
+        <h2>Result</h2>
+        <div class="empty">Run a query to see the intent, the extracted slots and how the answer was produced.</div>
+      </div>
+
+      <div class="card">
+        <h2>Held-out evaluation · 45 queries</h2>
+        <div class="stats">
+          <div class="stat"><strong>88.9%</strong><span>Exact match</span><br><em>73.3% model only</em></div>
+          <div class="stat"><strong>93.3%</strong><span>Intent accuracy</span><br><em>88.9% model only</em></div>
+          <div class="stat"><strong>100%</strong><span>Valid JSON</span><br><em>JSON mode + fallback</em></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    API: <a href="/docs">interactive docs</a> · <a href="/health/ready">readiness</a> ·
+    queries are processed locally and never logged.
+  </footer>
+</div>
+
+<script>
+(() => {
+  const EXAMPLES = [
+    ["Fuel search", ["closest truck stop with paved parking and ATM within 15 mi", "gas station with DEF within 30 km"]],
+    ["Cards", ["disable my card 987654 forever", "I lost my card 112233", "unlock card 4521"]],
+    ["Users & IDs", ["remove user jane.doe@example.com", "change driver id", "generate a fuel code"]],
+    ["Notifications", ["disable all alerts", "show notification details"]],
+    ["Handled by rules", ["monthly fuel cost report", "what else"]],
+  ];
+
+  const SLOTS = [
+    ["action", "Action"],
+    ["merchant_type", "Merchant type"],
+    ["fuel_type", "Fuel type"],
+    ["radius", "Radius"],
+    ["amenities", "Amenities"],
+    ["card_number", "Card number"],
+    ["email", "Email"],
+    ["pagination_action", "Pagination"],
+  ];
+
+  const $ = (id) => document.getElementById(id);
+  const form = $("form"), input = $("query"), submit = $("submit"), result = $("result");
+  const history = [];
+
+  function el(tag, attrs = {}, ...children) {
+    const node = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs)) {
+      if (k === "class") node.className = v;
+      else if (k === "style") node.style.cssText = v;
+      else node.setAttribute(k, v);
+    }
+    for (const c of children) if (c != null) node.append(c);
+    return node;
+  }
+
+  // Examples
+  for (const [label, queries] of EXAMPLES) {
+    const chips = el("div", { class: "chips" });
+    for (const q of queries) {
+      const chip = el("button", { class: "chip", type: "button" }, q);
+      chip.addEventListener("click", () => { input.value = q; updateCounter(); classify(q); });
+      chips.append(chip);
+    }
+    $("examples").append(el("div", {}, el("div", { class: "group-label" }, label), chips));
+  }
+
+  function updateCounter() { $("counter").textContent = `${input.value.length} / 500`; }
+  input.addEventListener("input", updateCounter);
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); }
+  });
+  form.addEventListener("submit", (e) => { e.preventDefault(); const q = input.value.trim(); if (q) classify(q); });
+
+  function formatSlot(key, data) {
+    const value = data[key];
+    if (key === "radius" && value != null) return `${Number(value)} ${data.radius_unit || ""}`.trim();
+    if (Array.isArray(value)) return value.length ? value.join(", ") : null;
+    return value;
+  }
+
+  function renderResult(query, data) {
+    result.replaceChildren(el("h2", {}, "Result"));
+    const fromRules = data.source === "rules";
+    const sourceBadge = el("span", { class: "badge" + (fromRules ? " rules" : "") },
+      fromRules ? "Answered by rules · no model call" : "Model + rule layer");
+    const intentRow = el("div", { class: "intent-row" }, el("span", { class: "intent" }, data.intent), sourceBadge);
+    if (data.intent === "UNKNOWN") intentRow.append(el("span", { class: "badge unknown" }, "Out of scope"));
+    result.append(intentRow, el("div", { class: "query-echo" }, `“${query}”`));
+
+    const conf = typeof data.confidence === "number" ? data.confidence : null;
+    const confCell = el("div", {}, el("span", {}, "Confidence"), el("strong", {}, conf == null ? "–" : conf.toFixed(2)));
+    if (conf != null) confCell.append(el("div", { class: "bar" }, el("i", { style: `width:${Math.round(conf * 100)}%` })));
+    result.append(el("div", { class: "meta" },
+      el("div", {}, el("span", {}, "Latency"), el("strong", {}, data.latency_ms < 1000 ? `${data.latency_ms} ms` : `${(data.latency_ms / 1000).toFixed(2)} s`)),
+      confCell,
+      el("div", {}, el("span", {}, "Action"), el("strong", {}, data.action || "–")),
+    ));
+
+    const rows = SLOTS.filter(([key]) => key !== "action")
+      .map(([key, label]) => [label, formatSlot(key, data)])
+      .filter(([, v]) => v != null && v !== "");
+    const table = el("table");
+    if (rows.length) {
+      for (const [label, v] of rows) table.append(el("tr", {}, el("th", {}, label), el("td", {}, el("code", {}, String(v)))));
+    } else {
+      table.append(el("tr", {}, el("td", { class: "none", colspan: "2" }, "No slots for this intent")));
+    }
+    result.append(table);
+
+    const pre = el("pre", {}, JSON.stringify(data, null, 2));
+    result.append(el("details", {}, el("summary", {}, "Raw JSON response"), pre));
+  }
+
+  function renderError(message) {
+    result.replaceChildren(el("h2", {}, "Result"), el("div", { class: "error" }, message));
+  }
+
+  function addHistory(query, data) {
+    history.unshift({ query, data });
+    history.length = Math.min(history.length, 8);
+    const list = $("history");
+    list.replaceChildren(...history.map((h) => {
+      const b = el("button", { type: "button", title: h.query }, el("span", { class: "q" }, h.query), el("span", { class: "i" }, h.data.intent));
+      b.addEventListener("click", () => { input.value = h.query; updateCounter(); renderResult(h.query, h.data); });
+      return el("li", {}, b);
+    }));
+    $("history-card").hidden = false;
+  }
+
+  async function classify(query) {
+    submit.disabled = true;
+    result.replaceChildren(el("h2", {}, "Result"), el("div", { class: "empty" }, el("span", { class: "spinner" }), "Classifying…"));
+    try {
+      const res = await fetch("/classify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        const detail = Array.isArray(data.detail) ? data.detail.map((d) => d.msg).join("; ") : data.detail;
+        throw new Error(detail || `Request failed (HTTP ${res.status})`);
+      }
+      renderResult(query, data);
+      addHistory(query, data);
+      // On a single-column layout the result sits below the examples.
+      if (window.matchMedia("(max-width: 860px)").matches) result.scrollIntoView({ behavior: "smooth", block: "start" });
+    } catch (err) {
+      renderError(err.message || "Could not reach the API.");
+    } finally {
+      submit.disabled = false;
+    }
+  }
+
+  async function checkStatus() {
+    const box = $("status"), text = $("status-text");
+    try {
+      const res = await fetch("/health/ready");
+      const data = await res.json();
+      box.className = "status " + (data.ready ? "ready" : "down");
+      text.textContent = data.ready ? `${data.model} ready`
+        : !data.ollama_reachable ? "Ollama not running" : `${data.model} not pulled`;
+    } catch {
+      box.className = "status down";
+      text.textContent = "API unreachable";
+    }
+  }
+  checkStatus();
+  setInterval(checkStatus, 15000);
+
+  // ?q=... runs a query on load, so a demo link can open with a result.
+  const initial = new URLSearchParams(location.search).get("q");
+  if (initial) { input.value = initial; updateCounter(); classify(initial); }
+})();
+</script>
+</body>
+</html>
