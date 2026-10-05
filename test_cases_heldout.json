@@ -1,0 +1,360 @@
+[
+  {
+    "query": "where is the nearest truck stop",
+    "expected": {
+      "intent": "FUEL_SEARCH",
+      "merchant_type": "TS",
+      "fuel_type": "Diesel"
+    }
+  },
+  {
+    "query": "locate a gas station within 5 miles",
+    "expected": {
+      "intent": "FUEL_SEARCH",
+      "merchant_type": "GS",
+      "fuel_type": "Gas",
+      "radius": 5,
+      "radius_unit": "miles"
+    }
+  },
+  {
+    "query": "closest truck station with diesel within 25 km",
+    "expected": {
+      "intent": "FUEL_SEARCH",
+      "merchant_type": "TS",
+      "fuel_type": "Diesel",
+      "radius": 25,
+      "radius_unit": "km"
+    }
+  },
+  {
+    "query": "find a truck stop and gas station with reefer fuel within 40 miles",
+    "expected": {
+      "intent": "FUEL_SEARCH",
+      "merchant_type": "FS",
+      "fuel_type": "Reefer",
+      "radius": 40,
+      "radius_unit": "miles"
+    }
+  },
+  {
+    "query": "nearest gas stop with an ATM",
+    "expected": {
+      "intent": "FUEL_SEARCH",
+      "merchant_type": "GS",
+      "fuel_type": "Gas",
+      "amenities": [
+        "ATM"
+      ]
+    }
+  },
+  {
+    "query": "show truck stop with parking within 12 mi",
+    "expected": {
+      "intent": "FUEL_SEARCH",
+      "merchant_type": "TS",
+      "fuel_type": "Diesel",
+      "radius": 12,
+      "radius_unit": "miles",
+      "amenities": [
+        "TrkPrkPave",
+        "TrkPrkUnPv",
+        "TrkPrkOvNt"
+      ]
+    }
+  },
+  {
+    "query": "cheapest truck stop with overnight parking and atm",
+    "expected": {
+      "intent": "FUEL_SEARCH",
+      "merchant_type": "TS",
+      "fuel_type": "Diesel",
+      "amenities": [
+        "TrkPrkOvNt",
+        "ATM"
+      ]
+    }
+  },
+  {
+    "query": "find nearest truck station selling lng",
+    "expected": {
+      "intent": "FUEL_SEARCH",
+      "merchant_type": "TS",
+      "fuel_type": "LNG"
+    }
+  },
+  {
+    "query": "locate gasoline station with cng within 8 km",
+    "expected": {
+      "intent": "FUEL_SEARCH",
+      "merchant_type": "GS",
+      "fuel_type": "CNG",
+      "radius": 8,
+      "radius_unit": "km"
+    }
+  },
+  {
+    "query": "show me another truck stop",
+    "expected": {
+      "intent": "FUEL_SEARCH",
+      "merchant_type": "TS",
+      "fuel_type": "Diesel",
+      "pagination_action": "next"
+    }
+  },
+  {
+    "query": "pls reactivate my card 4321",
+    "expected": {
+      "intent": "CARD_MANAGEMENT",
+      "action": "activate",
+      "card_number": "4321"
+    }
+  },
+  {
+    "query": "pause card 56789",
+    "expected": {
+      "intent": "CARD_MANAGEMENT",
+      "action": "hold",
+      "card_number": "56789"
+    }
+  },
+  {
+    "query": "I lost my card 112233",
+    "expected": {
+      "intent": "CARD_MANAGEMENT",
+      "action": "block",
+      "card_number": "112233"
+    }
+  },
+  {
+    "query": "cancel card 9090",
+    "expected": {
+      "intent": "CARD_MANAGEMENT",
+      "action": "block",
+      "card_number": "9090"
+    }
+  },
+  {
+    "query": "close card 445566 for good",
+    "expected": {
+      "intent": "CARD_MANAGEMENT",
+      "action": "block",
+      "card_number": "445566"
+    }
+  },
+  {
+    "query": "freeze card 7788 permanently",
+    "expected": {
+      "intent": "CARD_MANAGEMENT",
+      "action": "block",
+      "card_number": "7788"
+    }
+  },
+  {
+    "query": "deactivate card 2468",
+    "expected": {
+      "intent": "CARD_MANAGEMENT",
+      "action": "hold",
+      "card_number": "2468"
+    }
+  },
+  {
+    "query": "delete my card 13579",
+    "expected": {
+      "intent": "CARD_MANAGEMENT",
+      "action": "block",
+      "card_number": "13579"
+    }
+  },
+  {
+    "query": "report card 8642 stolen",
+    "expected": {
+      "intent": "CARD_MANAGEMENT",
+      "action": "block",
+      "card_number": "8642"
+    }
+  },
+  {
+    "query": "please unlock card 5544",
+    "expected": {
+      "intent": "CARD_UNLOCK",
+      "action": null,
+      "card_number": "5544"
+    }
+  },
+  {
+    "query": "unlock my card 908070 now",
+    "expected": {
+      "intent": "CARD_UNLOCK",
+      "action": null,
+      "card_number": "908070"
+    }
+  },
+  {
+    "query": "delete user priya@fleetco.in",
+    "expected": {
+      "intent": "USER_MANAGEMENT",
+      "action": "deactivate",
+      "email": "priya@fleetco.in"
+    }
+  },
+  {
+    "query": "deactivate user sam.lee@transport.com",
+    "expected": {
+      "intent": "USER_MANAGEMENT",
+      "action": "deactivate",
+      "email": "sam.lee@transport.com"
+    }
+  },
+  {
+    "query": "please remove the user raj@logistics.co",
+    "expected": {
+      "intent": "USER_MANAGEMENT",
+      "action": "deactivate",
+      "email": "raj@logistics.co"
+    }
+  },
+  {
+    "query": "get me a fuel code",
+    "expected": {
+      "intent": "FUEL_CODE",
+      "action": "generate"
+    }
+  },
+  {
+    "query": "void the fuel code",
+    "expected": {
+      "intent": "FUEL_CODE",
+      "action": "cancel"
+    }
+  },
+  {
+    "query": "show fuel codes",
+    "expected": {
+      "intent": "FUEL_CODE",
+      "action": "list"
+    }
+  },
+  {
+    "query": "what is the fuel code status",
+    "expected": {
+      "intent": "FUEL_CODE",
+      "action": "status"
+    }
+  },
+  {
+    "query": "I need a fuel code",
+    "expected": {
+      "intent": "FUEL_CODE",
+      "action": "generate"
+    }
+  },
+  {
+    "query": "deactivate driver id",
+    "expected": {
+      "intent": "PROMPTED_ID_MANAGEMENT",
+      "action": "inactivate"
+    }
+  },
+  {
+    "query": "update my pin",
+    "expected": {
+      "intent": "PROMPTED_ID_MANAGEMENT",
+      "action": "change"
+    }
+  },
+  {
+    "query": "create a new prompted id",
+    "expected": {
+      "intent": "PROMPTED_ID_MANAGEMENT",
+      "action": "create"
+    }
+  },
+  {
+    "query": "list pid details",
+    "expected": {
+      "intent": "PROMPTED_ID_MANAGEMENT",
+      "action": "details"
+    }
+  },
+  {
+    "query": "activate driver id",
+    "expected": {
+      "intent": "PROMPTED_ID_MANAGEMENT",
+      "action": "activate"
+    }
+  },
+  {
+    "query": "enable alerts",
+    "expected": {
+      "intent": "NOTIFICATION_MANAGEMENT",
+      "action": "enable"
+    }
+  },
+  {
+    "query": "deactivate notification",
+    "expected": {
+      "intent": "NOTIFICATION_MANAGEMENT",
+      "action": "disable"
+    }
+  },
+  {
+    "query": "disable all notifications",
+    "expected": {
+      "intent": "NOTIFICATION_MANAGEMENT",
+      "action": "disable_all"
+    }
+  },
+  {
+    "query": "list notifications",
+    "expected": {
+      "intent": "NOTIFICATION_MANAGEMENT",
+      "action": "details"
+    }
+  },
+  {
+    "query": "enable all exception alerts",
+    "expected": {
+      "intent": "NOTIFICATION_MANAGEMENT",
+      "action": "enable_all"
+    }
+  },
+  {
+    "query": "another one",
+    "expected": {
+      "intent": "UNKNOWN",
+      "action": null,
+      "pagination_action": "next"
+    }
+  },
+  {
+    "query": "monthly fuel cost report",
+    "expected": {
+      "intent": "UNKNOWN"
+    }
+  },
+  {
+    "query": "give me insights on driver behaviour",
+    "expected": {
+      "intent": "UNKNOWN"
+    }
+  },
+  {
+    "query": "summary of card usage",
+    "expected": {
+      "intent": "UNKNOWN"
+    }
+  },
+  {
+    "query": "what is the weather today",
+    "expected": {
+      "intent": "UNKNOWN"
+    }
+  },
+  {
+    "query": "book a hotel near me",
+    "expected": {
+      "intent": "UNKNOWN"
+    }
+  }
+]

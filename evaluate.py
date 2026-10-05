@@ -1,9 +1,20 @@
 import json
+import sys
 import time
 import requests
 
 
 API_URL = "http://127.0.0.1:8000/classify"
+
+# Usage:
+#   python evaluate.py                          -> test_cases.json, metrics_report.json
+#   python evaluate.py test_cases_heldout.json  -> metrics_report_heldout.json
+TEST_FILE = sys.argv[1] if len(sys.argv) > 1 else "test_cases.json"
+REPORT_FILE = (
+    "metrics_report.json"
+    if TEST_FILE == "test_cases.json"
+    else "metrics_report_" + TEST_FILE.replace("test_cases_", "").replace(".json", "") + ".json"
+)
 
 
 def normalize_value(value):
@@ -13,7 +24,7 @@ def normalize_value(value):
 
 
 def main():
-    with open("test_cases.json", "r", encoding="utf-8") as f:
+    with open(TEST_FILE, "r", encoding="utf-8") as f:
         test_cases = json.load(f)
 
     # Support both formats:
@@ -102,7 +113,7 @@ def main():
 
     print(json.dumps(metrics, indent=2))
 
-    with open("metrics_report.json", "w", encoding="utf-8") as f:
+    with open(REPORT_FILE, "w", encoding="utf-8") as f:
         json.dump({
             "metrics": metrics,
             "detailed_results": detailed_results
