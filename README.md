@@ -8,7 +8,9 @@ Intent classification and slot extraction for fleet-management requests, running
 "disable my card 987654 forever"   →   { "intent": "CARD_MANAGEMENT", "action": "block", "card_number": "987654", ... }
 ```
 
-![Demo page: a fuel search query classified as FUEL_SEARCH with merchant type, fuel type, radius and amenities](docs/screenshot.png)
+![Demo: queries classified live on the demo page, including a fuel search, a card block, a user deactivation and a report request answered by rules without a model call](docs/demo.gif)
+
+*34-second demo recorded on the local service (qwen2.5:3b on a GTX 1660 Ti). Run it yourself with the [quick start](#quick-start).*
 
 ## Results
 
@@ -265,3 +267,7 @@ tests/                   rule, API, client and scoring tests
 ## Tech stack
 
 Python, FastAPI, Pydantic, Ollama, Qwen 2.5 (3B), pytest, Docker, GitHub Actions
+
+## License
+
+[MIT](LICENSE)
